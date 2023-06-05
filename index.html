@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>cicular progress bar</title>
+
+    <!-- Poppins Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,700&display=swap">
+
+    <!-- CSS File -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+   <div class="circle aqua">
+        <div class="circle-inner">
+            80%
+        </div>
+    </div>
+    <div class="circle pink">
+        <div class="circle-inner">
+            60%
+        </div>
+    </div>
+    <div class="circle gold">
+        <div class="circle-inner">
+            40%
+        </div>
+      
+    </div>
+    <script>
+
+        let interval = 1000;
+let Displayvalue = document.querySelectorAll(".circle-inner");
+
+Displayvalue.forEach((valueDisplay) => {
+	let startValue = 0;
+	let endValue = parseInt(valueDisplay.textContent);
+	let duration = Math.floor(interval / endValue);
+    
+      
+	let counter = setInterval(function () {
+		startValue += 1;
+		valueDisplay.textContent = startValue;
+     if(valueDisplay.parentElement.classList[1]=="aqua"){
+        valueDisplay.parentElement.style.background='conic-gradient(aqua 0 '+ startValue+'%'+', #303238 '+startValue+'%'+' 100%)'
+    }
+    if(valueDisplay.parentElement.classList[1]=="pink"){
+        valueDisplay.parentElement.style.background='conic-gradient(hotpink 0 '+ startValue+'%'+', #303238 '+startValue+'%'+' 100%)'
+    }
+    if(valueDisplay.parentElement.classList[1]=="gold"){
+        valueDisplay.parentElement.style.background='conic-gradient(gold 0 '+ startValue+'%'+', #303238 '+startValue+'%'+' 100%)'
+    }
+		if (startValue == endValue) {
+			clearInterval(counter);
+		}
+	}, duration);
+});
+
+    </script>
+</body>
+
+</html>
